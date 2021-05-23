@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Study</title>
+    <style>
+        body {
+            font-size: 9pt;
+            font-family: "Gulim";
+        }
+        div, p, ul, li {
+            border: 1px #eeeeee solid;
+            margin: 10px;
+        }
+        ul {
+            padding: 10px;
+        }
+        li.select {
+            background-color: #ccc;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#btn').click(function (index){
+                console.log($('.menu').text());
+            })
+
+        });
+    </script>
+</head>
+<body>
+    <button id="btn">Button</button>
+    <ul class="menu">
+        <li>menu1</li>
+        <li>menu2</li>
+        <li class="select">menu3</li>
+        <li>menu4</li>
+        <li>menu5</li>
+        <li>menu6</li>
+    </ul>
+</body>
+</html>

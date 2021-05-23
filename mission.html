@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mission</title>
+    <style>
+        .tab-menu {
+            list-style: none;
+            height: 80px;
+        }
+        .tab-menu li {
+            width: 99px;
+            height: 40px;
+            background-position-y: 0;
+            text-indent: -1000px;
+            overflow: hidden;
+            display: inline-block;
+            float: left;
+        }
+        .tab-menu li:hover {
+            background-position-y: -40px;
+        }
+        .tab-menu li.select {
+            background-position-y: -80px;
+            height: 80px;
+        }
+        .tab-menu li.menuitem1 {
+            background-image: url("#");
+        }
+        .tab-menu li.menuitem2 {
+            background-image: url("#");
+        }
+        .tab-menu li.menuitem3 {
+            background-image: url("#");
+        }
+        .tab-menu li.menuitem4 {
+            background-image: url("#");
+        }
+        .tab-menu li.menuitem5 {
+            background-image: url("#");
+        }
+        .tab-menu li.menuitem6 {
+            background-image: url("#");
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var $select = $('ul.menu li:first');
+            $select.nextAll('.select').css('border', '4px solid #f00');
+        });
+    </script>
+</head>
+<body>
+    <ul class="tab-menu" id="tabMenu1">
+        <li class="menuitem1">google</li>
+        <li class="menuitem2">facebook</li>
+        <li class="menuitem3 select">pintest</li>
+        <li class="menuitem4">twitter</li>
+        <li class="menuitem5">airbnb</li>
+        <li class="menuitem6">path</li>
+    </ul>
+</body>
+</html>
