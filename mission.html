@@ -46,19 +46,22 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
-            var $select = $('ul.menu li:first');
-            $select.nextAll('.select').css('border', '4px solid #f00');
+            $('#add').click(function () {
+                $('ul.menu').append("<li>" +  + "</li>");
+            })
         });
     </script>
 </head>
 <body>
-    <ul class="tab-menu" id="tabMenu1">
-        <li class="menuitem1">google</li>
-        <li class="menuitem2">facebook</li>
-        <li class="menuitem3 select">pintest</li>
-        <li class="menuitem4">twitter</li>
-        <li class="menuitem5">airbnb</li>
-        <li class="menuitem6">path</li>
+    <input type="text" id="menuName">
+    <button id="add">Add</button>
+    <button id="update">Update</button>
+    <button id="remove">Remove</button>
+    <button id="up">UP</button>
+    <button id="down">DOWN</button>
+
+    <ul class="menu">
+
     </ul>
 </body>
 </html>
