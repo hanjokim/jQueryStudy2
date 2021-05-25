@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mission</title>
+    <style>
+        #panel {
+            width: 600px;
+            overflow: visible;
+            border: 1px dotted #cccccc;
+            font-size: 20px;
+        }
+        #fish {
+            position: absolute;
+            left: 250px;
+            top: 150px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var number = 1;
+            setInterval(function () {
+                $item = $('<span>'+ number++ + '</span>');
+                $('#panel').append($item.css({
+                    "color": "#" + parseInt(Math.random() * 0xffffff).toString(16),
+                    "font-size": Math.random() * 40 + 10,
+                    "display": "inline-block"
+                }))
+                this.window.scrollTo(0, window.document.body.scrollHeight);
+            }, 20);
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <button id="btnStart">클릭하면 물고기가 움직여요.</button>
+    </div>
+    <div id="panel">
+        여기에 추가됩니다!
+    </div>
+</body>
+</html>
