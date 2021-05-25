@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ch06</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var $imageList = $('.target');
+            $imageList.each(function () {
+                var sw = true;
+                $(this).click(function () {
+                    if (sw) {
+                        $(this).attr('src', './fish2.png');
+                    } else {
+                        $(this).attr('src', './fish.png');
+                    }
+                    sw = !sw;
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="panel1">
+        <p>test1</p>
+        <img src="1.png" class="target">
+    </div>
+    <div class="panel2">
+        <p>test2</p>
+        <img src="1.png" class="target">
+    </div>
+    <div class="panel3">
+        <p>test3</p>
+        <img src="1.png" class="target">
+    </div>
+</body>
+</html>

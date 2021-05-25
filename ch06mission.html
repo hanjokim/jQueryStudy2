@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06mission</title>
+    <style>
+        body {
+            font-size: 9pt;
+        }
+        .panel {
+            width: 840px;
+            height: 415px;
+            border: 1px solid #ccc;
+        }
+        .nav {
+            width: 840px;
+            text-align: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        var $view = null;
+        var currentIndex = 1;
+        var timerId = 0;
+
+        $(document).ready(function () {
+            init();
+
+            initEvent();
+        })
+
+        function initEvent() {
+            $("#play").click(function () {
+                startAutoPlay();
+            })
+
+            $("#stop").click(function (){
+                stopAutoPlay();
+            })
+
+            $("#prev").click(function (){
+                prevImage();
+            })
+
+            $("#next").click(function (){
+                nextImage();
+            })
+        }
+
+        function init() {
+            $view = $("#view");
+        }
+
+        function startAutoPlay(){
+            if (timerId == 0) {
+                timerId = setInterval(function (){
+                    nextImage();
+                }, 100);
+                console.log(timerId);
+            }
+        }
+
+        function stopAutoPlay(){
+            if (timerId != 0) {
+                clearInterval(timerId);
+                timerId = 0;
+            }
+        }
+
+        function nextImage(){
+            currentIndex++;
+            if (currentIndex >= 3) {
+                currentIndex = 1;
+            }
+            $view.attr("src", "./" + currentIndex + ".png");
+        }
+
+        function prevImage(){
+            currentIndex--;
+            if (currentIndex <= 0) {
+                currentIndex = 2;
+            }
+            $view.attr("src", "./" + currentIndex + ".png");
+        }
+    </script>
+</head>
+<body>
+<div class="panel">
+    <img src="1.png" id="view">
+</div>
+<div class="nav">
+        <button id="play">play</button>
+        <button id="stop">stop</button>
+        <button id="prev">prev</button>
+        <button id="next">next</button>
+    </div>
+</body>
+</html>
