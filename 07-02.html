@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-02</title>
+    <style>
+        .mouseover {
+            background-color: #cccccc;
+        }
+        .select {
+            border: 1px solid black;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        var count = 0;
+        var $info = null;
+        $(document).ready(function (){
+            $info = $("#info");
+
+            $("#parent").mouseover(function (e){
+                count++;
+                $info.html($info.html() + "<br>" + count + ", " + e.target.id + ".over");
+            });
+            $("#parent").mouseout(function (e){
+                count++;
+                $info.html($info.html() + "<br>" + count + ", " + e.target.id + ".out");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="info">
+        여기에 이벤트 정보 출력
+    </div>
+    <div id="parent">
+        parent
+        <div id="child">
+            child
+        </div>
+    </div>
+</body>
+</html>
