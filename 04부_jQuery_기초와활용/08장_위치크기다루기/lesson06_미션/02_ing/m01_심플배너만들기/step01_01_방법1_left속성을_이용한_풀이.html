@@ -65,6 +65,47 @@
 
          */
         $(document).ready(function(){
+            // .banner 구하기
+            var $banner = $(".banner");
+            // 배너 개수 구하기
+            var bannerLength = $banner.find("img").length;
+            // 배너 하나의 너비 구하기
+            var bannerWidth = $banner.width();
+            // 현재 보여지고 있는 배너의 index 값 저장 변수
+            var currentIndex = 0;
+
+            // index 번째 배너 이미지 출력
+            function showImage(index){
+                // index 번째 배너 위치 값 구하기
+                var left = -(bannerWidth * index);
+                // 배너 위치 설정하기
+                $('.banner-container').css("left", left);
+            }
+
+            // 이전 버튼(#prev)에 클릭 이벤트 등록
+            $("#prev").click(function(){
+                // 인덱스 값 구하기
+                currentIndex--;
+                if(currentIndex<0)
+                    currentIndex= bannerLength-1;
+
+                // currentIndex 번째 배너 이미지 출력
+                showImage(currentIndex);
+
+            })
+
+            // 다음 버튼(#next)에 클릭 이벤트 등록
+            $("#next").click(function(){
+                // 인덱스 값 구하기
+                currentIndex++;
+                if(currentIndex>=bannerLength)
+                    currentIndex= 0;
+
+                // currentIndex 번째 배너 이미지 출력
+                showImage(currentIndex);
+            })
+
+
 
         });
     </script>

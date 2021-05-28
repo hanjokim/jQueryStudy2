@@ -52,9 +52,100 @@
      * step #00
      *      - 기본 레이아웃 잡기 
      */
+        var $imgs = null;
+        var dragSW = false;
+        var $dragTarget = null;
+        var startImgX = 0;
+        var startImgY = 0;
+        var zIndex = 100;
+
+        var $selectPanel = null;
+        var selectPanelLeft = 0;
+        var selectPanelTop = 0;
+        var selectPanelRight = 0;
+        var selectPanelBottom = 0;
+
         $(document).ready(function(){
-            
+            init();
+            initImagePos();
+
+            initEvent();
         })
+
+        function init(){
+            $imgs = $(".container img");
+
+            $selectPanel = $(".select");
+            selectPanelLeft = $selectPanel.offset().left;
+            selectPanelTop = $selectPanel.offset().top;
+            selectPanelRight = $selectPanel.offset().left + $selectPanel.width();
+            selectPanelBottom = $selectPanel.offset().top + $selectPanel.height();
+        }
+
+        function initImagePos(){
+            $imgs.each(function (){
+                var left = Math.floor(Math.random() * 700);
+                var top = Math.floor(Math.random() * 340);
+                $(this).css({
+                    "left": left,
+                    "top": top
+                })
+            })
+        }
+
+        function initEvent() {
+            $imgs.on("mousedown", function (e) {
+                $dragTarget = $(this);
+                dragSW = true;
+
+                var offset = $dragTarget.offset();
+                startImgX = e.pageX - offset.left;
+                startImgY = e.pageY - offset.top;
+
+                zIndex++;
+                $dragTarget.css({
+                    zIndex: zIndex
+                })
+                activeDragEvent();
+            });
+
+
+        }
+
+        function activeDragEvent(){
+            $(document).on("mousemove", function (e){
+                console.log("mousemove");
+                if (dragSW == true){
+                    e.preventDefault();
+
+                    var endX = e.pageX - startImgX;
+                    var endY = e.pageY - startImgY;
+
+                    $dragTarget.offset({
+                        left: endX,
+                        top: endY
+                    })
+                }
+            });
+            $(document).on("mouseup", function (e){
+                console.log("mouseup");
+                checkSelectArea(e.pageX, e.pageY);
+                dragSW = false;
+                $dragTarget = null;
+                $(document).off();
+            });
+        }
+
+        function checkSelectArea(dropX, dropY){
+            if (selectPanelLeft < dropX && selectPanelRight > dropX){
+                if(selectPanelTop < dropY && selectPanelBottom > dropY){
+                    $selectPanel.append($dragTarget);
+                    $dragTarget.off();
+                    $dragTarget = null;
+                }
+            }
+        }
+
     </script>
 </head>
     

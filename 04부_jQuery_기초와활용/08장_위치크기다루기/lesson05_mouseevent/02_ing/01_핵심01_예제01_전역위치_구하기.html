@@ -46,9 +46,9 @@
 
 			$("#panel").click(function(e){
 				// 클릭한 위치 값 알아내기
-				var strInfo = "clientX = "+ ? +", clientY = "+ ? +"<br>";
+				var strInfo = "clientX = "+ e.clientX +", clientY = "+ e.clientY +"<br>";
 				// document를 기준으로 하는 위치값 알아내기
-				strInfo += "pageX = "+ ? +", pageY = "+ ? +"<br>"
+				strInfo += "pageX = "+ e.pageX +", pageY = "+ e.pageY +"<br>"
 
 				// 클릭한 위치 값 출력
 				$info.html(strInfo);

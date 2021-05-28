@@ -34,7 +34,16 @@
          */
         $(document).ready(function(){
             // 여기에 풀이를 입력해주세요.            
+            $(window).on("scroll", function (){
+                var str = "window.pageXOffset = " + window.pageXOffset + "<br>";
+                str += "window.pageYOffset = " + window.pageYOffset + "<br>";
 
+                $('#info').html(str);
+            })
+
+            $('#gotoTop').click(function (){
+                window.scrollTo(0, 0);
+            })
         })
     </script>
 </head>

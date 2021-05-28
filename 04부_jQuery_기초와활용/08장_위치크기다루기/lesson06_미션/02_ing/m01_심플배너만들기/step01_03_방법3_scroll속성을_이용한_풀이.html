@@ -19,6 +19,8 @@
            border:1px solid #000;
            overflow:hidden;
         }
+
+
         div.banner-container{
             width:1300px;  /* 260*5 */
         }
@@ -57,16 +59,16 @@
             // 배너 개수 구하기
             var bannerLength = $banner.find("img").length;
             // 배너 하나의 너비 구하기
-            var bannerWidth=$banner.width();
+            var bannerWidth = $banner.width();
             // 현재 보여지고 있는 배너의 index 값 저장 변수
             var currentIndex = 0;
 
             // index 번째 배너 이미지 출력
             function showImage(index){
                 // index 번째 배너 위치 값 구하기
-               ?
+                var left = bannerWidth * index;
                 // 배너 위치 설정하기
-                ?
+                $banner.scrollLeft(left);
             }
 
             // 이전 버튼(#prev)에 클릭 이벤트 등록

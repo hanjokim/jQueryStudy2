@@ -28,9 +28,15 @@
             // newWindow변수 선언
             var newWindow =null;
             // #create에 클릭 이벤트 등록
-            $("#create").click(function(){
+            $("#create").click(function (){
+                newWindow = window.open("http://www.google.co.kr", "newWindow", "width=1200, height=800");
+            })
+            $("#resize").click(function(){
                 // open()메서드를 활용해 새로운 윈도우 생성
-                newWindow = window.open("", "newWindow", "width=200, height=200");
+                var windowWidth = Math.floor(Math.random() * 400) + 200;
+                var windowHeight = Math.random() * 300 + 200;
+
+                newWindow.resizeTo(windowWidth, windowHeight);
             });
 
             // 여기에 코드를 입력해주세요.

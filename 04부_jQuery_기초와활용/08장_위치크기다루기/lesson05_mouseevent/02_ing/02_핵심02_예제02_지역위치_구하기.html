@@ -44,16 +44,20 @@
         
         $("#panel").click(function(e){
             // 클릭한 위치 값 알아내기
-            ?
-            
+            var offsetX = e.pageX - $(this).offset().left;
+            var offsetY = e.pageY - $(this).offset().top;
+
             // 위치 값을 문자열로 만들기
-            ?
-            
+            var str = "offsetX = " + offsetX + ", offsetY = " + offsetY;
+
             // 클릭한 위치 값 출력
-            ?
+            $info.html(str);
             
             // 클릭한 위치로 이동
-            ?
+            $fish.css({
+                left: offsetX,
+                top: offsetY
+            })
         })
     })  
 </script>

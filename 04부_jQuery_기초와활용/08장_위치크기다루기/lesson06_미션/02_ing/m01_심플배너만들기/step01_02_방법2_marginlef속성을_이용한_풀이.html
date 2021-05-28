@@ -17,6 +17,7 @@
             width:260px;
             height:166px;
            border:1px solid #000;
+            overflow: hidden;
 
            /* position: relative; */
 
@@ -66,9 +67,9 @@
             // index 번째 배너 이미지 출력
             function showImage(index){
                 // index 번째 배너 위치 값 구하기
-                ?
+                var left = -(bannerWidth * index);
                 // 배너 위치 설정하기
-                ?
+                $banner.css("margin-left", left)
             }
 
             // 이전 버튼(#prev)에 클릭 이벤트 등록

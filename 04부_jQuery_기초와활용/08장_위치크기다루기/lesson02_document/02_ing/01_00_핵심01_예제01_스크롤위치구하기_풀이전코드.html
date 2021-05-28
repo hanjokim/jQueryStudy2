@@ -30,8 +30,13 @@
 
 		 */
         $(document).ready(function(){
-          
-            
+			$(window).on("resize", function (){
+				var str = "width = " + $(document).width() + ", height = " + $(document).height() + "<br>";
+				str += "screen width = " + screen.availWidth + " screen height = " + screen.availHeight;
+				$('#info').html(str);
+
+			})
+
         })
 		
 	</script>
