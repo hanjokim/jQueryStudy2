@@ -45,7 +45,26 @@
 
          */
         $(document).ready(function(){
+            var $info = $("#info");
+            var $container = $("#container");
+            var scrollEnd = $container.find("img").width() - $container.width();
 
+            $("#btn").click(function (){
+                var left = $container.scrollLeft();
+                var count = 0;
+
+                var timerID = setInterval(function (){
+                    left += 5;
+                    $container.scrollLeft(left);
+
+                    count++;
+                    $info.html(count + ", left = " + left + ", scrollEnd = " + scrollEnd);
+
+                    if (left >= scrollEnd) {
+                        clearInterval(timerID);
+                    }
+                }, 100);
+            })
         })
     </script>
 

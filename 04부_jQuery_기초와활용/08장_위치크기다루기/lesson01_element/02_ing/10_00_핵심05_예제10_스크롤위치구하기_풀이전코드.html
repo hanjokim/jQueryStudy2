@@ -47,7 +47,13 @@
             var $container = $("#container");
             // 여기에 풀이를 입력해주세요.
 
-           
+            $("#btn").click(function (){
+                var scrollLeft = $container.scrollLeft();
+                var scrollTop = $container.scrollTop();
+                var str = "scrollLeft = " + scrollLeft + "<br>";
+                str += "scrollTop = " + scrollTop;
+                $info.html(str);
+            })
         })
     </script>
 

@@ -65,8 +65,15 @@
          */
         $(document).ready(function() {
             // 여기에 풀이를 입력해주세요.
-
-
+            var $info = $("#info")
+            var $fish = $(".fish");
+            $fish.click(function (){
+                var pos = $(this).position();
+                var off = $(this).offset();
+                var str = "id=" + $(this).attr("id") + ', ' + "지역좌표 " + "left=" + pos.left + ', ' + "top=" + pos.top + "<br>";
+                str += "id=" + $(this).attr("id") + ', ' + "전역좌표 "  + "left=" + off.left + ', ' + "top=" + off.top;
+                $info.html(str);
+            })
         })
     </script>
 

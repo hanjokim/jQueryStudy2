@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title> </title>
 
 <style>
@@ -27,10 +27,10 @@
     	height:80px;
     }
     .tab-menu li.menuitem1 {
-    	background-image: url(./images/newbtn.bar.1.png);	
+    	background-image: url(images/newbtn.bar.2.png);
     }
     .tab-menu li.menuitem2 {
-    	background-image: url(./images/newbtn.bar.2.png);	
+    	background-image: url(images/newbtn.bar.1.png);
     }
     .tab-menu li.menuitem3 {
     	background-image: url(./images/newbtn.bar.3.png);	
@@ -70,14 +70,16 @@
      * 미션01: 이벤트를 활용한 탭메뉴와 탭패널 연동
      */
     var tabPanel1 = null;
-    $(document).ready(function(){       
-       tabMenu("#tabMenu1");
+    $(document).ready(function(){
+       tabMenu("#tabMenu1", function (index){
+           tabPanel1.setSelectPanelAt(index);
+       });
 
-       // var tabPanel1 = tabPanel(".tab-contents");
-       // tabPanel1 = setSelectPanel(1);
+       tabPanel1 = tabPanel(".tab-contents");
+        // tabPanel1.setSelectPanel(0);
     });
 
-    function tabMenu(selector){
+    function tabMenu(selector, callback){
         var $tabMenu = null;
         var $menuItems = null;
         var $selectMenuitem = null;
@@ -100,7 +102,9 @@
             $selectMenuitem = $item;
             $selectMenuitem.addClass("select");
 
-            tabPanel1.setSelectPanelAt($item.index());
+            if (callback){
+                callback($item.index());
+            }
         }
 
         init();
@@ -111,7 +115,7 @@
         var $tabPanels = null;
         var $selectPanel = null;
 
-        function init(){
+        function init(selector){
             $tabPanels = $(selector).find(".content");
         }
 
@@ -123,7 +127,7 @@
             $selectPanel.addClass("select");
         }
 
-        init();
+        init(selector);
 
         return {
             setSelectPanelAt:selSelectPanelAt

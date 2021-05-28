@@ -51,7 +51,12 @@
             // #fish 찾기
             var $fish = $("#fish");
             // 여기에 코드를 입력해주세요.
-         
+            var str = "기본크기 width=" + $fish.width() + ", height=" + $fish.height() + "<br>";
+            str += "기본크기+padding  = " + $fish.innerWidth() +", height=" + $fish.innerHeight() + "<br>";
+            str += "기본크기+padding+border  = " + $fish.outerWidth() +", height=" + $fish.outerHeight() + "<br>";
+            str += "기본크기+padding+border+margin  = " + $fish.outerWidth(true) +", height=" + $fish.outerHeight(true) + "<br>";
+
+            $info.html($info.html() + str);
         };
     </script>
 
@@ -60,7 +65,7 @@
 <body>
 
     <div id="info">
-        (paddin=30px, border=20px, margin=50px)
+        (padding=30px, border=20px, margin=50px)
         <br>
     </div>
     <div id="parent1">

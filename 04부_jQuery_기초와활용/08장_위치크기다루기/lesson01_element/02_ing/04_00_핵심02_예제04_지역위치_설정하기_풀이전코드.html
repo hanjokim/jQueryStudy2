@@ -70,8 +70,17 @@
      */
     $(document).ready(function() {
         $("#btnAlign").click(function(e) {
+            var left = 50;
+            var top = 50;
             // 여기에 풀이를 입력해주세요.
-           
+            $(".fish").each(function (index) {
+                $(this).css({
+                    left: left ,
+                    top: top
+                });
+                left += 50;
+                top += 50;
+            })
         });
         
     })
