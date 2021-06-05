@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div id="div1">
+        <p id="p1">This is a paragraph</p>
+        <p id="p2">This is another paragraph</p>
+    </div>
+    <script>
+        var parent = document.getElementById("div1");
+        var node = document.getElementById("p1");
+        var para = document.createElement("p");
+        var text = document.createTextNode("This is new");
+        para.appendChild(text);
+        parent.replaceChild(para, node);
+        para.setAttribute("id", "p1")
+    </script>
+</body>
+</html>

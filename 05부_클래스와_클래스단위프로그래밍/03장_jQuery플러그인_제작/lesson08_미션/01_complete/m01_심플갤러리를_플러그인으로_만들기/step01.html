@@ -45,9 +45,49 @@
          */
         // 플러그인 생성
         (function($){
+            function SimpleGallery(selector, count, width, height){
+                // 프로퍼티 생성
+                this.$images = null;
+                this.count =count;
+                this.imageWidth = width;
+                this.imageHeight = height;
+
+                this.init(selector);
+            }
+
+            // 요소 초기화
+            SimpleGallery.prototype.init=function(selector){
+                this.$images = $(selector);
+            }
+
+
+            // 이미지 출력 메서드 추가
+            SimpleGallery.prototype.showGallery=function(){
+                // 이미지 개수 구하기.
+                var length = this.$images.length;
+
+                // 이미지 배열하기.
+                for(var i=0;i<length;i++){
+                    // n번째 이미지 구하기
+                    var $img = this.$images.eq(i);
+
+
+                    // 위치 값 구하기
+                    var x = 100+((i%this.count)*this.imageWidth);
+                    var y = 100+(parseInt(i/this.count)*this.imageHeight);
+
+                    // 위치 설정
+                    $img.css({
+                        left:x,
+                        top:y
+                    });
+                }
+            }
+
             $.fn.simpleGallery=function(){
                 this.each(function(index){
-                    console.log(this);
+                    var gallery = new SimpleGallery($(this).children('img'), 5, 200, 200);
+                    gallery.showGallery();
                 })
             }
         })(jQuery);

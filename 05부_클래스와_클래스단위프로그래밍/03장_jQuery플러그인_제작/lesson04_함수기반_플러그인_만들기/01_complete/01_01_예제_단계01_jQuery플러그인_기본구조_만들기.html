@@ -69,7 +69,38 @@
 				// 요소 개수 만큼 루프 돌기
 				this.each(function(index){
 					// 구현 코드 위치
-					console.log(this);
+					var $tabMenu =null;
+					var $menuItems=null;
+					var $selectMenuItem=null;
+
+					// 요소 초기화
+					function init(selector){
+						$tabMenu = $(selector);
+						$menuItems = $tabMenu.find("li");
+					}
+
+					// 이벤트 등록
+					function initEvent(){
+						$menuItems.on("click",function(){
+							setSelectItem($(this));
+						});
+					}
+
+					// $menuItem에 해당하는 메뉴 아이템 선택하기
+					function setSelectItem($menuItem){
+						// 기존 선택메뉴 아이템을 비활성화 처리하기
+						if($selectMenuItem){
+							$selectMenuItem.removeClass("select");
+						}
+
+						// 신규 아이템 활성화 처리하기
+						$selectMenuItem = $menuItem;
+						$selectMenuItem.addClass("select");
+					}
+
+					init(this);
+					initEvent();
+
 				})
 				// this 리턴
 				return this;
