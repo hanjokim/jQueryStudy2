@@ -49,8 +49,9 @@
          */
         $(document).ready(function(){
             var rolling1 = new RollingBanner("#banner1", 3000, 1000);
-            var rolling2 = new RollingBanner("#banner2", 1000, 300);
+            var rolling2 = new ChildRollingBanner("#banner2", 1000, 300);
         });
+
 
         function RollingBanner(selector, playSpeed, rollingSpeed) {
             // 프로퍼티 생성및 초기화
@@ -149,6 +150,13 @@
                 opacity:1
             },this._rollingSpeed);
         }
+
+        function ChildRollingBanner(selector, playSpeed, rollingSpeed){
+            RollingBanner.call(this, selector, playSpeed, rollingSpeed);
+        }
+
+        ChildRollingBanner.prototype = new RollingBanner();
+        ChildRollingBanner.prototype.constructor = ChildRollingBanner;
 
     </script>
 </head>

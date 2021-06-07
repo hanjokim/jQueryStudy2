@@ -45,7 +45,10 @@
 
             // 버튼 클릭 이벤트 실행.
             $("#btnHorizontal").click(function() {
-                img1.show();
+                img1.show("horizontal");
+            });
+            $("#btnVertical").click(function() {
+                img1.show("vertical");
             });
 
         });
@@ -90,7 +93,8 @@
                 var x = i * 200;
 
                 this.$images.eq(i).css({
-                    left : x
+                    left : x,
+                    top: 0
                 });
             }
         }

@@ -11,7 +11,7 @@
 			width:400px;			
 			height:200px;
 			
-			overflow:hidden;;
+			overflow:hidden;
 			border:2px solid #000;
 		}
 		
@@ -19,7 +19,7 @@
 			position:absolute;
 			top:0;
 			left:0;
-			opacity:0.5;
+			/*opacity:0.5;*/
 		
 		}
 				
@@ -40,14 +40,68 @@
 		 *
 		 */
 		$(document).ready(function(){
-			
+			var rolling1 = new RollingBanner();
 		})
+
+		function RollingBanner(){
+			this._$banners = null;
+			this._currentIndex = 0;
+			this._timerID = -1;
+
+			this._init();
+			this._initBannerPos();
+			this.startAutoPlay();
+		}
+
+		RollingBanner.prototype._init = function (){
+			this._$banners = $("#banner1 img");
+		}
+
+		RollingBanner.prototype._initBannerPos = function (){
+			this._$banners.css("top", 200);
+			this._$banners.eq(this._currentIndex).css("top", 0);
+		}
+		RollingBanner.prototype.startAutoPlay = function (){
+			var objThis = this;
+
+			if (this._timerID == -1) {
+				this._timerID = setInterval(function (){
+					objThis.nextBanner();
+				}, 2000);
+			}
+		}
+		RollingBanner.prototype.nextBanner = function (){
+			var outIndex = this._currentIndex;
+			this._currentIndex++;
+
+			if (this._currentIndex >= this._$banners.length){
+				this._currentIndex = 0;
+			}
+
+			var $outBanner = this._$banners.eq(outIndex);
+			var $inBanner = this._$banners.eq(this._currentIndex);
+
+			$inBanner.css({
+				top: 200,
+				opacity: 0
+			});
+
+			$outBanner.stop().animate({
+				top: -200,
+				opacity: 0
+			}, 600);
+
+			$inBanner.stop().animate({
+				top: 0,
+				opacity: 1
+			}, 600);
+		}
 		
 	</script>
 </head>
 
 <body>
-	<div class="rolling-banner">
+	<div class="rolling-banner" id="banner1">
 		<img src="images/logo_01.jpg">
 		<img src="images/logo_02.jpg">
 		<img src="images/logo_03.jpg">
